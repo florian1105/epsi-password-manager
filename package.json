@@ -1,22 +1,48 @@
 {
   "name": "epsi-password-manager",
-  "version": "1.0.0",
-  "description": "EPM (EPSI Password Manager) is a project to apply cryptographic concepts in an application to build a secure password manager.",
-  "main": "index.js",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/florian1105/epsi-password-manager.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/florian1105/epsi-password-manager/issues"
-  },
-  "homepage": "https://github.com/florian1105/epsi-password-manager#readme",
   "dependencies": {
-    "node-rsa": "^1.1.1"
-  }
+    "axios": "^0.21.1",
+    "core-js": "^3.6.5",
+    "vue": "^2.6.14",
+    "vue-loading-spinner": "^1.0.11",
+    "vue-material": "^1.0.0-beta-15",
+    "vue-router": "^3.5.1",
+    "vue-server-renderer": "^2.6.14",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }
