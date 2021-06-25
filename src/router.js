@@ -11,6 +11,6 @@ export const router = new VueRouter({
         {
             path:'/connexion',
             component: Connexion
-        }
+        },
     ]
 })

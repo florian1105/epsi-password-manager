@@ -30,13 +30,14 @@
 <script>
   import axios from "axios";
   import {Circle2} from 'vue-loading-spinner';
+  import { key } from '../../key.js'
   export default {
     name: 'Connexion',
     data () {
       return {
         email: '',
         password: '',
-        formSent: false
+        formSent: false,
       }
     },
     components : {
@@ -50,28 +51,35 @@
           console.log(this.email);
           console.log(this.password);
           axios
-            .post('http://localhost:5000/', {
+            .post('http://localhost:5000/login', {
               email: this.email,
-              password: this.password
+              password: this.encrypt(this.password)
             }, {headers: {'Access-Control-Allow-Origin': '*', 'Accept': '*'}})
             .then(response => {
-              if (response.data.jwt != null) {
-                this.$store.commit('loadJwt', response.data.jwt);
-                this.$store.commit('loadUser', this.email);
-                console.log(this.$store.state.jwt);
-                axios.get('http://localhost:5000/article/auteur/'+this.email).then(res => {
-                  var id = res.data[0]._id;
-                  this.$store.commit('loadAuteurId',id);
-                  this.$router.push('mesArticles');
-                });
-              }
+              console.log(response)
+              axios.get('http://localhost:5000/password'+this.email).then(res => {
+                var id = res.data[0]._id;
+                this.$store.commit('loadAuteurId',id);
+                this.$router.push('mesArticles');
+              });
             })
             .catch(error => {
               console.log(error);
               this.formSent = false;
             });
         }
-      }
+      },
+      encrypt : function(password){
+        let encrypted = key.encrypt(password)
+        return encrypted
+      },
+
+      decrypt: function(){
+
+      },
+
+
+
     }
   }
 </script>
